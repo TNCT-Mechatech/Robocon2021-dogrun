@@ -1,0 +1,5 @@
+<!--this file is hardly considered since author is aho-->
+<launch>
+    <node pkg="dogrun" type="recognize_circle" name="recognize_ball" output="screen"/>
+    <node pkg="dogrun" type="twist_serial" name="TwistSerial" output="screen" />
+</launch>

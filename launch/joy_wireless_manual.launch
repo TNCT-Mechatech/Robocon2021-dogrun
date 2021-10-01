@@ -1,0 +1,6 @@
+<!--this is hardly considered since author is aho-->
+<launch>
+    <node pkg="joy" type="joy_node" name="joy_node" />
+    <node pkg="dogrun" type="wireless_joy_twist" name="wireless_joy_twist" />
+    <node pkg="dogrun" type="twist_serial" name="TwistSerial" output="screen" />
+</launch>
