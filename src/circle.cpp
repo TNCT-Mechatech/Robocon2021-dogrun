@@ -14,7 +14,7 @@ int main(int argc, char** argv)
 	//ROSの処理
 	ros::init(argc, argv, "ishi_img");  //ノードの登録
 	ros::NodeHandle nh;
-	ros::Rate looprate(10);  //10ms周期で処理を実行
+	ros::Rate looprate(10);
 	geometry_msgs::Twist cmd_vel;  //publish用メッセージ
 	ros::Publisher twist_pub=nh.advertise<geometry_msgs::Twist>("cmd_vel",1000);
 	image_transport::ImageTransport it(nh);

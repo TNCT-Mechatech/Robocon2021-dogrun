@@ -10,17 +10,18 @@ find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
 )
 
+catkin_package()
+
 include_directories(${catkin_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
 
-add_executable(recognize_ball src/circle.cpp)
-target_link_libraries(recognize_ball ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+add_executable(wireless_joy_twist src/joy_twist.cpp)
+target_link_libraries(wireless_joy_twist ${catkin_LIBRARIES})
 
-#これ
+add_executable(recognize_circle src/joy_twist.cpp)
+target_link_libraries(recognize_circle ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+
 add_executable(twist_serial src/twist_serial.cpp)
 target_link_libraries(twist_serial ${catkin_LIBRARIES})
-
-#target_link_libraries(twist_serial ${CMAKE_SOURCE_DIR}/SerialBridge/bin/libSerialBridge.a)
-#target_include_directories(twist_serial PRIVATE ${CMAKE_SOURCE_DIR}/SerialBridge/bin/libSerialBridge.a)
 
 target_link_libraries(twist_serial /home/ishi14/catkin_ws/src/dogrun/SerialBridge/bin/libSerialBridge.a)
 target_include_directories(twist_serial PRIVATE /home/ishi14/catkin_ws/src/dogrun/SerialBridge/src)
