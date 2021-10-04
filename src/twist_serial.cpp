@@ -9,8 +9,8 @@
 
 void cmd_velCallback(const geometry_msgs::Twist& msg);
 
-SerialDev *dev = new LinuxHardwareSerial(SERIAL_PATH, B9600);
-SerialBridge serial(dev);
+SerialDev *dev = new LinuxHardwareSerial(SERIAL_PATH, B115200);
+SerialBridge serial(dev, 1024);
 
 typedef struct Vector3Type
 {
@@ -41,7 +41,7 @@ int main(int argc, char **argv)
     ros::init(argc,argv,"twist_serial");
     ros::NodeHandle nh;
     ros::Subscriber sub=nh.subscribe("cmd_vel", 10, cmd_velCallback);
-    ros::Rate loop_rate(10);
+    ros::Rate loop_rate(20);
 
     serial.add_frame(0, &dev_cmd_vel);
 
