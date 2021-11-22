@@ -35,8 +35,8 @@ target_link_libraries(circletest ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 add_executable(twist_serial src/twist_serial.cpp)
 target_link_libraries(twist_serial ${catkin_LIBRARIES})
 
-target_link_libraries(twist_serial /home/ishi14/catkin_ws/src/dogrun/SerialBridge/bin/libSerialBridge.a)
-target_include_directories(twist_serial PRIVATE /home/ishi14/catkin_ws/src/dogrun/SerialBridge/src)
+target_link_libraries(twist_serial ${CMAKE_CURRENT_SOURCE_DIR}/SerialBridge/bin/libSerialBridge.a)
+target_include_directories(twist_serial PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/SerialBridge/src)
 
 add_executable(bowwow src/bowwow.cpp)
 target_link_libraries(bowwow ${catkin_LIBRARIES})
