@@ -1,0 +1,5 @@
+<launch>
+  <node pkg="joy" type="joy_node" name="joy_node" />
+  <node pkg="dogrun" type="bowwow" name="bowwow" />
+  <node pkg="dogrun" type="joy_flag" name="joy_flag" />
+</launch>
