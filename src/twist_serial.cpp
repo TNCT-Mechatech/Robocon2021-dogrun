@@ -11,6 +11,7 @@
 
 void cmd_velCallback(const geometry_msgs::Twist& msg);
 void flaggerCallback(const std_msgs::Int16& msg);
+void shippoCallback(const std_msgs::Int16& msg);
 
 SerialDev *dev = new LinuxHardwareSerial(SERIAL_PATH, B115200);
 SerialBridge serial(dev, 1024);
@@ -24,7 +25,8 @@ typedef struct Vector3Type{
 typedef struct DogType{
     vector3_t linear;
 	vector3_t angular;
-    int flag;
+    int ballcatch;
+    int shippo;
 } dog_t;
 
 typedef sb::Message<dog_t> dev_Dog;
@@ -37,6 +39,7 @@ int main(int argc, char **argv)
     ros::NodeHandle nh;
     ros::Subscriber cmd_sub=nh.subscribe("cmd_vel", 10, cmd_velCallback);
     ros::Subscriber flag_sub=nh.subscribe("flagger", 10, flaggerCallback);
+    ros::Subscriber shippo_sub=nh.subscribe("shippo_flag", 10, shippoCallback);
     ros::Rate loop_rate(20);
 
     serial.add_frame(0, &dev_dog_vel);
@@ -62,5 +65,10 @@ void cmd_velCallback(const geometry_msgs::Twist& msg)
 
 void flaggerCallback(const std_msgs::Int16& msg)
 {
-    dev_dog_vel.data.flag = msg.data;
+    dev_dog_vel.data.ballcatch = msg.data;
+}
+
+void shippoCallback(const std_msgs::Int16& msg)
+{
+    dev_dog_vel.data.shippo = msg.data;
 }
