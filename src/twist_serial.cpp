@@ -7,7 +7,8 @@
 #include"geometry_msgs/Twist.h"
 
 //#define SERIAL_PATH "/dev/serial/by-path/pci-0000:00:14.0-usb-0:3:1.2"
-#define SERIAL_PATH "/dev/ttyACM0"
+#define SERIAL_PATH "/dev/serial/by-path/pci-0000:00:14.0-usb-0:5:1.2"
+//#define SERIAL_PATH "/dev/ttyACM0"
 
 void cmd_velCallback(const geometry_msgs::Twist& msg);
 void flaggerCallback(const std_msgs::Int16& msg);

@@ -8,10 +8,10 @@
 void flaggercallback(const std_msgs::Bool& msg)
 {
   if(msg.data==true){
-    system("aplay /home/ishi14/catkin_ws/src/dogrun/music/Bowwow.wav");
+    system("aplay /home/mechathink/catkin_ws/src/dogrun/music/Bowwow.wav");
     ROS_INFO("he is barking");
   } else if(msg.data==false){
-    system("aplay /home/ishi14/catkin_ws/src/dogrun/music/Silent.wav");
+    system("aplay /home/mechathink/catkin_ws/src/dogrun/music/Silent.wav");
     ROS_INFO("he is silent");
   }
 }
